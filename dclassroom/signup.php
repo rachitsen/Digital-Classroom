@@ -49,7 +49,7 @@ else{
 
     <title>SignUp - Digital Classroom</title>
   </head>
-  <body style=" background-color: white;background-image: linear-gradient(lightblue, blueviolet);">
+  <body style=" background-color: #B8A2DC">
   <?php require 'common/nav.php' ?>
     <?php
     if($showAlert){
