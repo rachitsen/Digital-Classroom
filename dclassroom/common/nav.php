@@ -37,15 +37,14 @@ echo '
             </ul>
           </div>';
         echo '<li class="nav-item">
-        
-        
         <a class="nav-link" href="/dclassroom/logout.php">Logout</a>
-        </li>
-        </li>';
+        </li></ul>
+        
+        <div class="d-flex flex-row bd-highlight">
+ <a class="nav-link active " style="background-color: white ;color:black;padding: 10px 20px;border-radius: 10%;" aria-current="page" href="#" style="align:left; "><img src="image/user2.jpg" alt="..." height="26" style="border-radius: 50%;"> '.$_SESSION['username'].'</a>
+</div>';
     }
-      echo '</ul>
-       class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      echo '
     </div>
   </div>
 </nav>';
