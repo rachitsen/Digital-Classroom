@@ -15,7 +15,7 @@ echo '
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="welcome.php" >Home</a>
+    <a class="nav-link active" aria-current="page" href="home.php" >Home</a>
         </li>';
         
         if(!$loggedin){
@@ -32,8 +32,8 @@ echo '
               Features
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="/dclassroom/index.php">Mark Attendance</a></li>
-              <li><a class="dropdown-item" href="#">Notes Section</a></li>
+              <li><a class="dropdown-item" href="/dclassroom/classrooms.php">Your Classrooms</a></li>
+              <li><a class="dropdown-item" href="#">Personal profile</a></li>
             </ul>
           </div>';
         echo '<li class="nav-item">
@@ -49,3 +49,6 @@ echo '
   </div>
 </nav>';
 ?>
+ 
+ 
+  
