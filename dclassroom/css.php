@@ -31,7 +31,7 @@
   border-radius: 25px;
   border: 2px solid powderblue;
   padding: 20px; 
-  width: 200px;
+  width: 300px;
   height: 150px;  
   background-color: #F0FFFF;
 }
@@ -60,7 +60,18 @@ body, html {
   left: 0;
   margin: 50px;
   max-width: 500px;
-  height: 510px;
+  height: 750px;
+  padding: 36px;
+  background-color: white;
+  box-shadow: 5px 10px 8px  #888888;
+}
+
+.logcontainer {
+  position: absolute;
+  left: 0;
+  margin: 50px;
+  max-width: 500px;
+  /* height: 510px; */
   padding: 36px;
   background-color: white;
   box-shadow: 5px 10px 8px  #888888;
@@ -90,6 +101,7 @@ input[type=text]:focus, input[type=password]:focus {
 .btn:hover {
   opacity: 1;
 }
+
 </style>
 </body>
 </html>
