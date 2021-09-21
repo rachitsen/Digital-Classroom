@@ -6,17 +6,22 @@ include "common/dbconnect.php";
 $username=$_POST['username'];
 $password=$_POST['password'];
 
-    $sql = "Select * from users where username='$username'";
+    $sql = "SELECT * FROM users WHERE username='$username'";
     $result = mysqli_query($conn,$sql);
     $num = mysqli_num_rows($result);
     if($num == 1){
       while($row=mysqli_fetch_assoc($result)){
         if(password_verify($password,$row['password'])){
           $login = true;
+
+          $data=mysqli_query($conn, $sql);
+          $res=mysqli_fetch_assoc($data);
+          $typeid = $res['typeid'];
           session_start();
                     $_SESSION['loggedin'] = true;
                     $_SESSION['username'] = $username;
-                    header("location: welcome.php");
+                    $_SESSION['typeid'] = $typeid;
+                    header("location: classrooms.php");
 
         }
         else{
@@ -62,7 +67,7 @@ else{
     <div class="form-group">
     <?php include 'css.php';?>
  <div class="bg-img">
-  <form action="/dclassroom/login.php" method="post" class="container">
+  <form action="/dclassroom/login.php" method="post" class="logcontainer">
     <h1>Login</h1>
 <br>
     <label for="username" class="form-label"><b>Username</b></label>
