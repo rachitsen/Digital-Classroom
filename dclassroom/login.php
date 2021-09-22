@@ -21,6 +21,7 @@ $password=$_POST['password'];
                     $_SESSION['loggedin'] = true;
                     $_SESSION['username'] = $username;
                     $_SESSION['typeid'] = $typeid;
+                    $_SESSION['classif'] = NULL;
                     header("location: classrooms.php");
 
         }
