@@ -73,24 +73,31 @@ if($total != 0)
 	 {
 	 
        echo "
-       <tr>
-       <td><a href='addstudent.php'>".$result['class_name']."</a></td>
+       <tr>";
+       $classid = $result['classid'];echo"
+       <td>".$result['class_name']."</td>
        <td>".$result['costum']."</td>
        <td>".$result['class_details']."</td>
+       <td><form method='POST'><button type='submit' name='button' value='$classid'>Enter</button></form></td>
        </tr>";
 	 }
 }
 else
 {
-	echo "no record";
+	echo "No class is formed";
 }
+
+		if(array_key_exists('button', $_POST)) {
+			$classid = $_POST['button'];
+      unset($_SESSION['classid']);
+      $_SESSION['classid']=$classid;
+      echo "<meta http-equiv='refresh' content='0; url=addstudent.php'>";
+      
+		}
+		function button1() {
+			echo "This is Button1 that is selected";
+        }
 ?>
-
-
-
-
-
-
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
