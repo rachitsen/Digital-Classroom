@@ -6,7 +6,7 @@ else{
   $loggedin=false;
 }
 echo '
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#333333">
   <div class="container-fluid" >
     <a class="navbar-brand" >Digital Classroom</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@ echo '
         </li></ul>
         
         <div class="d-flex flex-row bd-highlight">
- <a class="nav-link active " style="background-color: white ;color:black;padding: 10px 20px;border-radius: 10%;" aria-current="page" href="#" style="align:left; "><img src="image/user2.jpg" alt="..." height="26" style="border-radius: 50%;"> '.$_SESSION['username'].'</a>
+ <a class="nav-link active " style="background-color: white ;color:black;padding: 10px 20px;" aria-current="page" href="#" style="align:left; "><img src="image/user2.jpg" alt="..." height="26" style="border-radius: 50%;"> '.$_SESSION['username'].'</a>
 </div>';
     }
       echo '
