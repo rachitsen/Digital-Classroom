@@ -42,9 +42,14 @@ $classid = uniqid();
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 40%;
+  width: auto;
   border-radius: 20px;
-  padding:5px;
+  padding:3px;
+  background-color: white;
+  margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        text-align: center;
 }
 
 .card:hover {
@@ -84,17 +89,17 @@ img {
     
     <!-- create classroom form -->
     <div class="container my-5">
-      <h1>Create New Classroom</h1>
+      <h1 style="color: #3F0071;">Create New Classroom</h1>
     <form action="addclassrooms.php" method="POST">
   <div class="mb-3 my-4">
-    <label for="classname" class="form-label">Enter Classroom name</label>
+    <label for="classname" class="form-label" style="color: #610094;"><b>Enter Classroom name</label>
     <input type="text"  name ="classname" class="form-control" id="classname" >
 
-    <label for="classname" class="form-label my-3">Enter Subject</label>
+    <label for="classname" class="form-label my-3" style="color: #610094;">Enter Subject</label>
     <input type="text"  name="subject" class="form-control" id="classname" >
     
   <div class="mb-3">
-    <label for="classdetails" class="form-label my-3">Enter Classroom Details</label>
+    <label for="classdetails" class="form-label my-3" style="color: #610094;">Enter Classroom Details</label>
     <div class="form-outline">
   <textarea class="form-control"  name = "classdetails" id="classdetails" rows="4"></textarea>
 </div>
