@@ -9,15 +9,20 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){?>
 <html lang="en">
   <head>
   <style>
-.card {
+.pcard {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 40%;
+  width: auto;
   border-radius: 20px;
-  padding:5px;
+  padding:3px;
+  background-color: white;
+  margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        text-align: center;
 }
 
-.card:hover {
+.pcard:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
@@ -36,15 +41,15 @@ img {
 
     <title>Welcome -<?php echo $_SESSION['username']?></title>
      </head>
-       <body style="background-color: #DFBEF7;">
+       <body style="background-color: #CDECFF">
     <?php require 'common/nav.php';
     ?>
 
   <?php
   if($_SESSION['typeid']=='Teacher')
   {
-    echo'<a href="addclassrooms.php" style="text-decoration: none;">
-    <div class="card pcontainer my-3">
+    echo'<a href="addclassrooms.php" style="text-decoration: none; ">
+    <div class="pcard pcontainer my-3">
   <h2 style= "color:#1D3458,">Create New Classroom</h2>
 </div>
 </a>';}
@@ -60,27 +65,23 @@ $total=mysqli_num_rows($data);
 if($total != 0)
 {
 	?>
-       <table border="2px">
-       	<tr>
-
-            <th>Classroom name</th>
-       		<th>Subject</th>
-       		<th>ClassDetails</th>
-       	</tr>
      
 	<?php
 	while($result=mysqli_fetch_assoc($data))
 	 {
-	 
+    $classid = $result['classid'];
        echo "
-       <tr>";
-       $classid = $result['classid'];echo"
-       <td>".$result['class_name']."</td>
-       <td>".$result['costum']."</td>
-       <td>".$result['class_details']."</td>
-       <td><form method='POST'><button type='submit' name='button' value='$classid'>Enter</button></form></td>
-       </tr>";
-	 }
+       <div class='card w-75 h-150 my-3 rounded-lg' style='box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);margin-left: 13%;      
+  margin-right: 18%;
+  width: auto;'>
+  <div class='card-body pl-2'>
+    <h2 class='card-title' style='color:#706C61 '><b>".$result['class_name']."</b></h2>
+    <p class='card-text'>".$result['class_details']."</p>
+    <form method='POST'><button type='submit' name='button' value='$classid' class='btn btn-primary' style='background-color:#64C9CF'>Enter</button></form>
+  </div>
+</div>";
+   }
 }
 else
 {
