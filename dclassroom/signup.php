@@ -49,7 +49,10 @@ else{
 
     <title>SignUp - Digital Classroom</title>
   </head>
-  <body style=" background-color: #B8A2DC">
+  <body style="background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+background-attachment: fixed;
+  background-repeat: no-repeat;">
   <?php require 'common/nav.php' ?>
     <?php
     if($showAlert){
@@ -71,28 +74,27 @@ else{
 <div class="form-group">
     <?php include 'css.php';?>
  <div class="bg-img">
-  <form action="/dclassroom/signup.php" method="post" class="container">
-    <h2>Sign Up</h2>
-    <label for="name" class="form-label"><b>Name</b></label>
+  <form action="/dclassroom/signup.php" method="post" class="signupcontainer">
+    <h1>Sign Up</h1>
+    <label for="name" class="form-label"></label>
     <input type="text" class="form-control" placeholder="Enter Full Name" name="name" required>
 
-    <label for="email" class="form-label"><b>Email</b></label>
+    
     <input type="text" class="form-control" placeholder="Enter Email" name="email" aria-describedby="emailHelp" required>
 
-    <label for="username" class="form-label"><b>Username</b></label>
+    
     <input type="text" class="form-control" placeholder="Enter Unique Username" name="username"  required>
 
     <label class="checkbox-inline">
-      <input type="checkbox" name="typeid" value="Teacher">Teacher
+      <input type="checkbox" name="typeid" value="Teacher" ><b> Teacher</b>
     </label>
     <label class="checkbox-inline">
-      <input type="checkbox" name="typeid" value="Student">Student
+      <input type="checkbox" name="typeid" value="Student"><b> Student</b>
     </label>
    <br>
-    <label for="password" class="form-label"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" class="form-control" id="password" name="password" required>
      
-    <label for="cpassword" class="form-label"><b>Confirm Password</b></label>
+    
     <input type="password" placeholder="Enter Confirm Password" maxlength="23" class="form-control" id="cpassword" name="cpassword">
     
     <button type="submit" name="submit" class="btn">Sign Up</button>

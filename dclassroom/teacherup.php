@@ -10,7 +10,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true || $_SESSION['ty
   include "common/dbconnect.php";
  
 $username=$_SESSION['username'];
-$query=mysqli_query($conn,"SELECT * FROM teachers where username='$username'")or die(mysqli_error());
+$query=mysqli_query($conn,"SELECT * FROM teachers where username='$username'")or die(mysqli_error($conn));
 $row=mysqli_fetch_array($query);
   ?>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ $row=mysqli_fetch_array($query);
     <style>@import url('httpss://fonts.googleapis.com/css?family=Roboto');
 	
 	body {
-  background:linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
+        background-color: #CDECFF;
 }
 
 .signup-form {
@@ -54,7 +54,7 @@ $row=mysqli_fetch_array($query);
 }
 
 .form-body .label-title {
-  color:#1BBA93;
+  color:#38A3A5;
   font-size: 17px;
   font-weight: bold;
 }
@@ -144,13 +144,20 @@ input[type="file"] {
   color:white;
 }
 </style>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
 
 
     </head>
 
 
 
-<body>
+<body style="background-color: #CDECFF">
+<?php include 'common/nav.php'?>
 <form class="signup-form" action="/dclassroom/teacherup.php" method="post">
 
   <!-- form header -->
@@ -163,14 +170,14 @@ input[type="file"] {
 
 <!-- Firstname and Lastname -->
 <div class="horizontal-group">
-<h2> Teacher Details</h2>
+<h1 style="color:#316B83;text-align:center">Update Details</h1><br>
   <div class="form-group left">
-      <label for="n" class="label-title">Name *</label>
-      <input type="text" id="n" class="form-input" name="n" value="<?php echo $row['n']; ?>" required="required" />
+      <label for="n" class="label-title">Name </label>
+      <input type="text" id="n" class="form-input" name="n" value="<?php echo $row['fullname']; ?>" required="required" >
   </div>
   <div class="form-group right">
       <label for="email" class="label-title">Email *</label>
-      <input type="text" id="email" name="email" value="<?php echo $row['email']; ?>" class="form-input"  />
+      <input type="text" id="email" name="email" value="<?php echo $row['email']; ?>" class="form-input"  required="required">
   </div>
 </div>
 
@@ -186,9 +193,9 @@ input[type="file"] {
       <?php echo $row['gender'];?>
       <div class="input-group">
           <label for="male">
-              <input type="radio" name="gender" value="male" id="male"> Male</label>
+              <input type="radio" name="gender" value="male" id="male" required="required"> Male</label>
           <label for="female">
-              <input type="radio" name="gender" value="female" id="female"> Female</label>
+              <input type="radio" name="gender" value="female" id="female" required="required"> Female</label>
 </div>
   </div>
 
@@ -196,7 +203,7 @@ input[type="file"] {
       <label for="doj" class="label-title">Date Of Joining</label>
       <div>
           <label>
-          <input type="date" class="form-control" value="<?php echo $row['doj']; ?>" name="doj" ></label>
+          <input type="date" required="required" class="form-control" value="<?php echo $row['doj']; ?>" name="doj" ></label>
           
       </div>
   </div>
@@ -208,12 +215,12 @@ input[type="file"] {
 
 <div class="form-group left">
   <label for="degree" class="label-title">Degree  *</label>
-  <input type="text" id="degree" class="form-input" name="degree" value="<?php echo $row['degree']; ?>" required="required">
+  <input type="text" id="degree" class="form-input" name="degree" required="required" value="<?php echo $row['degree']; ?>" required="required">
 </div>
 
 <div class="form-group right">
   <label for="skills" class="label-title">Skills *</label>
-  <input type="text" name="skills" class="form-input" id="skills" value="<?php echo $row['skills']; ?>" required="required">
+  <input type="text" name="skills" class="form-input" id="skills" required="required" value="<?php echo $row['skills']; ?>" required="required">
 </div>
 
 </div>
@@ -221,14 +228,10 @@ input[type="file"] {
 <!-- Profile picture and Age -->
 <div class="horizontal-group">
 
-<div class="form-group left" >
-<label for="choose-file" class="label-title">Upload Profile Picture</label>
-<input type="file" id="choose-file" size="80">
-</div>
 
 <div class="form-group right">
-<label for="yoe" class="label-title">Year Of Joining</label>
-<input type="integer"   class="form-input" value="<?php echo $row['yoe']; ?>" name="yoe">
+<label for="yoe" class="label-title">Year Of Experience</label>
+<input type="integer"   class="form-input" required="required" value="<?php echo $row['yoe']; ?>" name="yoe">
 </div>
 
 </div>
@@ -237,8 +240,7 @@ input[type="file"] {
   
   
   <!-- form header -->
-<div class="form-header">
-<h1>Create Account</h1>
+
 <span><button type="submit" class="btn btn-primary">Update</button></span>
 
 </div>
@@ -261,7 +263,7 @@ if(ISSET($_POST['email'])){
     $degree=$_POST['degree'];
     $skills=$_POST['skills'];
     $yoe=$_POST['yoe'];
-    $query="UPDATE teachers SET  n='$n' , email='$email' , contact='$contact' , gender='$gender' , doj='$doj', degree='$degree',skills='$skills',yoe='$yoe' WHERE username='$username'";
+    $query="UPDATE teachers SET  fullname='$n' , email='$email' , contact='$contact' , gender='$gender' , doj='$doj', degree='$degree',skills='$skills',yoe='$yoe' WHERE username='$username'";
     $data=mysqli_query($conn,$query);
     if($data)
     {

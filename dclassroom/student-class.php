@@ -42,38 +42,62 @@ img {
 .pcontainer {
   padding: 2px 26px;
 }
-.content-table{
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.6cm;
-  min-width: 400px;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba (0,0,0,0.15);
-   }
-   .content-table thead tr{
-     background-color: #316B83;
-     color:white;
-     text-align:left;
-     font-weight:bold;
-   }
-   .content-table th,
-   .content-table td{
-     padding: 12px 15px;
-   }
-   .content-table tbody tr{
-     border-bottom: 1px solid #dddddd;
-   }
-   .content-table tbody tr:nth-of-type(even){
-     background-color: #f3f3f3;
-   }
-   .content-table tbody tr:last-of-type {
-     border-bottom:2px solid #009879;
-   }
+.pcontainer {
+  padding: 2px 26px;
+}
+
+   .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    max-width: 70%;
+    
+    
+}
+.styled-table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.styled-table thead tr {
+    background-color: white;
+    color: #1E90FF;
+    font-size: 1cm;
+    border-bottom: 3px solid #008080;
+    text-align: left;
+    
+}
+.styled-table th,
+.styled-table td {
+  font-weight: bolder;
+    padding: 12px 15px;
+    
+}
+.styled-table{
+  background-color: white;
+}
+.styled-table tbody th {
+    font-weight: bolder;
+    border-bottom: 1px solid black;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 1px solid #B8B8B8;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
    #grad1 {
   height: 140px;
   background-color: red; /* For browsers that do not support gradients */
-  background-image: linear-gradient(#38A3A5, #22577A);
+  background-image: linear-gradient(#36d1dc, #5b86e5);
 }
   </style>
     <!-- Required meta tags -->
@@ -85,7 +109,7 @@ img {
 
     <title>Welcome -<?php echo $_SESSION['username']?></title>
   </head>
-  <body style="background-color: #CDECFF";>
+  <body style="background-color: white";>
 <?php include 'common/nav_student.php';?>
 <?php
 include "common/dbconnect.php";
@@ -124,14 +148,14 @@ $total=mysqli_num_rows($data);
 if($total != 0)
 {
 	?>
-       <table class="content-table center" style="width:90%">
+       <table class="styled-table" style="width:70%;">
          <thead>
 
 
-           <tr>
+           <tr class="active-row">
 
-             <td>Student name</td>
-             <td>Email</td>
+             <td>Classmates</td>
+             <td style='text-align: center;'><img src="images/smemail.png" width="8%" alt=""></td>
             </tr>
 
           </thead>
@@ -142,8 +166,8 @@ if($total != 0)
       echo "
       <tbody>
       <tr>
-      <td>".$result['student_name']."</td>
-      <td>".$result['email']."</td>
+      <td><img src='images/smprofile.jpg' width='4%'> ".$result['student_name']."</td>
+      <td style='text-align: center;'>".$result['email']."</td>
       
       </tr>
       </tbody>

@@ -12,7 +12,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){?>
 .pcard {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: auto;
+  width: auto; 
   border-radius: 20px;
   padding:3px;
   background-color: white;
@@ -40,8 +40,16 @@ img {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <title>Welcome -<?php echo $_SESSION['username']?></title>
+    <style>
+      .raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+    </style>
      </head>
-       <body style="background-color: #CDECFF">
+       <body style="background-color: #d6efff">
     <?php require 'common/nav.php';
     ?>
 
@@ -76,23 +84,25 @@ if($total != 0)
   margin-right: 18%;
   width: auto;'>
   <div class='card-body pl-2'>
-    <h2 class='card-title' style='color:#706C61 '><b>".$result['class_name']."</b></h2>
+    <h2 class='card-title' style='color:#585858 '><b>".$result['class_name']."</b></h2>
     <p class='card-text'>".$result['class_details']."</p>
-    <form method='POST'><button type='submit' name='button' value='$classid' class='btn btn-primary' style='background-color:#64C9CF'>Enter</button></form>
+    <form method='POST'><button type='submit' name='button'  value='$classid' class='btn btn-primary raise' style='background-color:#64C9CF'><b>Enter</b></button></form>
   </div>
 </div>";
    }
 }
 else
 {
-	echo "No class is formed";
+	echo '<div class="alert alert-light" role="alert">
+  Classes not created
+</div>';
 }
 
 		if(array_key_exists('button', $_POST)) {
 			$classid = $_POST['button'];
       unset($_SESSION['classid']);
       $_SESSION['classid']=$classid;
-      echo "<meta http-equiv='refresh' content='0; url=addstudent.php'>";
+      echo "<meta http-equiv='refresh' content='0; url=class.php'>";
       
 		}
 		function button1() {

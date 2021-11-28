@@ -65,16 +65,28 @@ body, html {
   background-color: white;
   box-shadow: 5px 10px 8px  #888888;
 }
+.signupcontainer {
+  position: absolute;
+  left: 0;
+  margin: 1.8%;
+  margin-left: 32%;
+  width: 38%;
+  height: 750%;
+  padding: 32px;
+  background-color: white;
+  box-shadow: 5px 20px 16px  #888888;
+}
 
 .logcontainer {
   position: absolute;
   left: 0;
-  margin: 50px;
-  max-width: 500px;
+  margin: 3.8%;
+  margin-left: 35%;
+  width: 30%;
   /* height: 510px; */
   padding: 36px;
   background-color: white;
-  box-shadow: 5px 10px 8px  #888888;
+  box-shadow: 5px 18px 16px  #888888;
 }
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -90,13 +102,14 @@ input[type=text]:focus, input[type=password]:focus {
 }
 /* Set a style for the submit button */
 .btn {
-  background-color: #9370DB;
+  background-color: #00B4D8 ;
   color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  
 }
 .btn:hover {
   opacity: 1;

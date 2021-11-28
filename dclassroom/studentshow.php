@@ -23,7 +23,7 @@ $name=$_POST['name'];
     $highestqualification=$_POST['highestqualification'];
     $skills=$_POST['skills'];
     
-    $sql ="INSERT INTO `students`(`username`, `name`,`email`, `contact`,`gender`,`dob`,`highestqualification`,`skills`) VALUES ('$username','$name','$email','$contact','$gender','$dob','$highestqualification','$skills')";
+    $sql ="INSERT INTO `students`(`username`, `fullname`,`email`, `contact`,`gender`,`dob`,`highestqualification`,`skills`) VALUES ('$username','$name','$email','$contact','$gender','$dob','$highestqualification','$skills')";
     $result=mysqli_query($conn,$sql);
 if($result)
     {
@@ -37,11 +37,11 @@ if($result)
 
   <head>
     <meta charset="utf-8">
-    <title>Profile</title>
+    <title>Personal Profile</title>
 <style>@import url('httpss://fonts.googleapis.com/css?family=Roboto');
 	
 	body {
-  background:linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
+        background-color: #CDECFF;
 }
 
 .signup-form {
@@ -50,6 +50,7 @@ if($result)
   margin:30px auto;
   background:linear-gradient(to right, #ffffff 0%, #fafafa 50%, #ffffff 99%);
   border-radius: 10px;
+  box-shadow: 5px 10px 16px  #888888;
 }
 
 
@@ -65,6 +66,7 @@ if($result)
 /* Form Body */
 /*---------------------------------------*/
 .form-body {
+  margin-top: 10%;
   padding:10px 40px;
   color:#666;
 }
@@ -74,7 +76,7 @@ if($result)
 }
 
 .form-body .label-title {
-  color:#1BBA93;
+  color:#38A3A5;
   font-size: 17px;
   font-weight: bold;
 }
@@ -164,10 +166,60 @@ input[type="file"] {
   color:white;
 }
 </style>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
 </head>
       
 
-<body>
+<body style="background-color: #CDECFF">
+<?php 
+echo '
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#333333">
+  <div class="container-fluid" >
+ 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#" >Digital Classroom</a>
+        </li>
+        
+        
+      
+           <li class="nav-item">
+         
+       <a class="nav-link" href="student-classroom.php">Classrooms</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#">Personal Profile</a>
+            </li>
+            
+           
+        <li class="nav-item">
+        <a class="nav-link" href="/dclassroom/logout.php">Logout</a>
+        </li></ul>
+        
+        <div class="d-flex flex-row bd-highlight"  >
+<a class="nav-link active " style="background-color: white ;color:black;padding: 10px 20px;" aria-current="page" style="align:left; "><img src="image/user2.jpg" alt="..." height="26" style="border-radius: 50%;"> '.$_SESSION['username'].'</a>
+</div>';
+    
+      echo'
+    </div>
+  </div>
+</nav>';
+?>
+
+<?php
+
+?>
+
 <?php
      if($created)
      {
@@ -183,8 +235,11 @@ $username=$_SESSION['username'];
 $query = mysqli_query($conn,"SELECT *  FROM students WHERE username='$username'");
 if(mysqli_num_rows($query) != 0)
 {
-  // echo 'user already present';
-header("location: studentup.php");
+  ?>
+  <script type="text/javascript">
+  window.location.href = 'http://localhost/dclassroom/studentup.php';
+  </script>
+  <?php
 }
   else{
     echo'
@@ -200,7 +255,7 @@ header("location: studentup.php");
 
 <!-- Firstname and Lastname -->
 <div class="horizontal-group">
-<h2> Personal Details</h2>
+<h1 style="color:#316B83;align:center"> Personal Details</h1>
   <div class="form-group left">
       <label for="name" class="label-title">Name *</label>
       <input type="text" id="name" class="form-input" name="name" placeholder="Enter your first name" required="required" />
@@ -257,10 +312,6 @@ header("location: studentup.php");
 <!-- Profile picture and Age -->
 <div class="horizontal-group">
 
-<div class="form-group left" >
-<label for="choose-file" class="label-title">Upload Profile Picture</label>
-<input type="file" id="choose-file" size="80">
-</div>
 
 
 
@@ -269,7 +320,7 @@ header("location: studentup.php");
   
   <!-- form header -->
 <div class="form-header">
-<h1>Create Account</h1>
+
 <span><button type="submit" class="btn btn-primary">Submit</button></span> <h5 style=text-align:center><b> <a href="studentup.php">Update</a></b></h5>
 
 </div>';

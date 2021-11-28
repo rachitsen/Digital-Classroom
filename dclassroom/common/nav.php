@@ -8,7 +8,9 @@ else{
 echo '
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#333333">
   <div class="container-fluid" >
-    <a class="navbar-brand" >Digital Classroom</a>
+  <a class="navbar-brand" href="Login_home.php">
+  <img src="images/dclogo.png" width="200" alt="">
+</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,24 +29,32 @@ echo '
         </li>';
         }
         if($loggedin){
-            echo '<div class="dropdown">
-            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Features
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="/dclassroom/classrooms.php">Your Classrooms</a></li>
-              <li><a class="dropdown-item" href="#">Personal profile</a></li>
-            </ul>
-          </div>';
+          echo '<li class="nav-item">';
+          if($_SESSION['typeid']=='Student'){
+      echo '<a class="nav-link" href="student-classroom.php">Classrooms</a>
+        </li>';}
+        else{
+        echo '<li class="nav-item">
+          <a class="nav-link" href="classrooms.php">Classrooms</a>
+        </li>';
+        }
+        if($_SESSION['typeid']=='Student'){
+          echo '<a class="nav-link" href="studentshow.php">Personal Profile</a>
+            </li>';}
+            else{
+            echo '<li class="nav-item">
+              <a class="nav-link" href="teachershow.php">Personal Profile</a>
+            </li>';
+            }
         echo '<li class="nav-item">
         <a class="nav-link" href="/dclassroom/logout.php">Logout</a>
         </li></ul>
         
-        <div class="d-flex flex-row bd-highlight">
- <a class="nav-link active " style="background-color: white ;color:black;padding: 10px 20px;" aria-current="page" href="#" style="align:left; "><img src="image/user2.jpg" alt="..." height="26" style="border-radius: 50%;"> '.$_SESSION['username'].'</a>
+        <div class="d-flex flex-row bd-highlight"  >
+<a class="nav-link active " style="background-color: white ;color:black;padding: 10px 20px;" aria-current="page" style="align:left; "><img src="images/profile.jpg" alt="..." height="30" style="border-radius: 50%;"> '.$_SESSION['username'].'</a>
 </div>';
     }
-      echo '
+      echo'
     </div>
   </div>
 </nav>';

@@ -83,7 +83,7 @@ if($total != 0)
 else
 {
 	echo '<div class="alert alert-light" role="alert">
-  Classes not credcdcated
+  <p style="text-align:center">Not enrolled in any class</p>
 </div>';
 }
 

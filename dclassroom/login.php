@@ -21,8 +21,18 @@ $password=$_POST['password'];
                     $_SESSION['loggedin'] = true;
                     $_SESSION['username'] = $username;
                     $_SESSION['typeid'] = $typeid;
-                    $_SESSION['classif'] = NULL;
-                    header("location: classrooms.php");
+                    $_SESSION['classid'] = NULL;
+                    $_SESSION['email'] = $res['email'];
+                    
+                    if($_SESSION['typeid'] == 'Student')
+                    {
+                      header("location: student-classroom.php");
+                    }
+                    else if($_SESSION['typeid'] == 'Admin')
+                   { header("location: admin.php");}
+                   else{
+                    header("location:classrooms.php");
+                   }
 
         }
         else{
@@ -48,8 +58,12 @@ else{
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <title>Login - Digital Classroom </title>
+    
   </head>
-  <body style=" background-color: white;background-image: linear-gradient(lightblue, blueviolet);">
+  <body style="background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+background-attachment: fixed;
+  background-repeat: no-repeat;">
     <?php require 'common/nav.php' ?>
     <?php
     if($login){
@@ -65,10 +79,11 @@ else{
    </div>';
        }
     ?>
-    <div class="form-group">
+    <div class="form-group" >
     <?php include 'css.php';?>
- <div class="bg-img">
-  <form action="/dclassroom/login.php" method="post" class="logcontainer">
+ <div class="bg-img"  >
+   
+  <form action="/dclassroom/login.php" method="post" class="logcontainer ">
     <h1>Login</h1>
 <br>
     <label for="username" class="form-label"><b>Username</b></label>
